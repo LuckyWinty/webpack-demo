@@ -2,7 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import printMe from './hmrTest.js';
 import * as serviceWorker from './serviceWorker';
+ if (module.hot) {
+    module.hot.accept('./hmrTest.js', function() {
+        console.log('Accepting the updated printMe module!');
+        printMe();
+    })
+}
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
